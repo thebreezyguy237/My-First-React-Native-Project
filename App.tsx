@@ -15,6 +15,7 @@
  
  const UselessTextInput = () => {
    const [text, onChangeText] = React.useState(null);
+   const [value, setValue] = useState([]);
    const [number, onChangeNumber] = React.useState(null);
    const [open, setOpen] = useState(false);
   const [items, setItems] = useState([
@@ -110,7 +111,7 @@
     }, []);
   
    return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: "#fff"}}>
      <View style={{paddingTop: 20, paddingBottom: 10, backgroundColor: "#f2f0f0"}}>
       <View
         style={styles.container}>
@@ -127,15 +128,17 @@
         style={styles.secondContainer}>
         <Text style={{fontWeight: "bold", paddingRight: 10, fontSize: 15, color: "#000"}}>Où </Text>
         <DropDownPicker 
-          style={{width: 346, borderLeftWidth: 0, borderColor: "#ebe1c5"}}
+          style={{width: 287, borderLeftWidth: 0, borderColor: "#e3dada"}}
           open={open}
+          value={value}
           items={items}
           setOpen={setOpen}
+          setValue={setValue}
           setItems={setItems}
           placeholder="Pays"
-          dropDownDirection="TOP"
-          zIndex={3000}
-          zIndexInverse={1000}
+          dropDownDirection="DOWN"
+          zIndex={1000}
+          zIndexInverse={4000}
           onOpen={onOpen}
         />
        {/*<TextInput
@@ -147,7 +150,7 @@
       <View 
       style={styles.thirdContainer}>
         <DropDownPicker 
-        style={{width: 190, borderWidth: 2, borderColor: "#006494", }}
+        style={{width: 150, borderWidth: 2, borderColor: "#006494", }}
         open={open1}
         value={value1}
         items={items1}
@@ -167,7 +170,7 @@
         showTickIcon={true}
       />
       <DropDownPicker 
-        style={{width: 190, borderWidth: 2, borderColor: "#006494"}}
+        style={{width: 150, borderWidth: 2, borderColor: "#006494"}}
         open={open2}
         value={value2}
         items={items2}
@@ -185,7 +188,7 @@
       <View 
       style={styles.fourthContainer}>
         <DropDownPicker 
-        style={{width: 190, borderWidth: 2, borderColor: "#006494"}}
+        style={{width: 150, borderWidth: 2, borderColor: "#006494"}}
         open={open3}
         value={value3}
         items={items3}
@@ -204,7 +207,7 @@
         max={8}
       />
       <DropDownPicker 
-        style={{width: 190, borderWidth: 2, borderColor: "#006494"}}
+        style={{width: 150, borderWidth: 2, borderColor: "#006494"}}
         open={open4}
         value={value4}
         items={items4}
@@ -230,14 +233,14 @@
          onPress={() => Alert.alert('Simple Button pressed')} 
         />
       </View>
-      <View style={{width: 200, margin: 10, paddingLeft: 20, paddingRight: 20}}>
+      <View style={{width: 200, paddingLeft: 20, paddingRight: 20}}>
         <Button 
           title="+ Plus de filtres"
           onPress={() => Alert.alert('Simple Button pressed')}>
          </Button>
       </View>
       </View>
-      <Text style={{fontWeight: "bold", color: "#000", fontSize: 15,  paddingLeft: 10, paddingRight: 10}}>Aucune données trouvée, 
+      <Text style={{fontWeight: "bold", color: "#000", fontSize: 15,  paddingLeft: 10, paddingRight: 10}}>Aucune donnée trouvée, 
       <Text style={{fontWeight: "normal"}}> vous voudriez <Text style={{color: "rgb(0, 100, 148)"}} onPress={()=> Linking.openURL("http://google.com")}>réinitialiser les filtres?</Text></Text> </Text>
      </SafeAreaView>
    );
@@ -251,17 +254,18 @@
      padding: 10,
      width: 320,
      borderRadius: 7,
-     borderColor: "#ebe1c5",
+     borderColor: "#e3dada",
      borderLeftWidth: 0,
      marginLeft: 5,
+     color: "#000"
    },
    container: {
     backgroundColor: "#fff",
     flexDirection: "row",
     alignItems: "center",
-    width: 390,
+    width: 330,
     borderWidth: 1,
-    borderColor: "#ebe1c5",
+    borderColor: "#e3dada",
     borderRadius: 7,
     paddingLeft: 10,
     height: 40,
@@ -272,36 +276,34 @@
     backgroundColor: "#fff",
     flexDirection: "row",
     alignItems: "center",
-    width: 390,
+    width: 330,
     borderWidth: 1,
-    borderColor: "#ebe1c5",
+    borderColor: "#e3dada",
     borderRadius: 7,
     paddingLeft: 10,
     height: 50,
     margin: 5,
     marginLeft: 10,
+    zIndex: 3000,
    },
    thirdContainer: {
     flexDirection: "row",
     alignItems: "center",
-    width: 200,
+    width: 170,
     height: 50,
     margin: 5,
     marginLeft: 10,
     marginTop: 20,
+    zIndex: 2000
    },
    fourthContainer: {
     flexDirection: "row",
     alignItems: "center",
-    width: 200,
+    width: 170,
     height: 50,
     margin: 5,
     marginLeft: 10,
    },
-   selectedCB: {
-    borderWidth: 1,
-    borderColor: "#006494"
-   }
  });
  
 export default UselessTextInput;
