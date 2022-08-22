@@ -11,7 +11,7 @@
 
  import React, { useCallback, useState } from "react";
  import DropDownPicker from 'react-native-dropdown-picker';
- import {View, SafeAreaView, StyleSheet, TextInput, Text, Button, Alert, Linking } from "react-native";
+ import {View, SafeAreaView, StyleSheet, TextInput, Text, Button, Alert, Linking, TouchableOpacity } from "react-native";
  
  const UselessTextInput = () => {
    const [text, onChangeText] = React.useState(null);
@@ -112,10 +112,10 @@
   
    return (
     <SafeAreaView style={{backgroundColor: "#fff"}}>
-     <View style={{paddingTop: 20, paddingBottom: 10, backgroundColor: "#f2f0f0"}}>
+     <View style={{paddingTop: 20, paddingBottom: 10, backgroundColor: "#f2f0f0",}}>
       <View
         style={styles.container}>
-       <Text style={{fontWeight: "bold", fontSize: 15, color: "#000"}}>
+       <Text style={{fontWeight: "900", fontSize: 15, color: "#000"}}>
         Quoi</Text>
        <TextInput
          style={styles.input}
@@ -124,11 +124,12 @@
          placeholder="Titre, libellé ou description de l'offre"
          />
       </View>
+
       <View
         style={styles.secondContainer}>
-        <Text style={{fontWeight: "bold", paddingRight: 10, fontSize: 15, color: "#000"}}>Où </Text>
+        <Text style={{fontWeight: "900", paddingRight: 10, fontSize: 15, color: "#000"}}>Où </Text>
         <DropDownPicker 
-          style={{width: 287, borderLeftWidth: 0, borderColor: "#e3dada"}}
+          style={{width: "91%", borderLeftWidth: 0, borderColor: "#e3dada"}}
           open={open}
           value={value}
           items={items}
@@ -136,21 +137,24 @@
           setValue={setValue}
           setItems={setItems}
           placeholder="Pays"
-          dropDownDirection="DOWN"
-          zIndex={1000}
-          zIndexInverse={4000}
+          dropDownDirection="DEFAULT"
+          zIndex={3000}
+          zIndexInverse={3000}
           onOpen={onOpen}
+          dropDownContainerStyle={{width: "91%", borderColor: "#f5f5f5",}}
+          labelStyle={{fontWeight: "500"}}
         />
+        
+      </View>
        {/*<TextInput
          style={styles.input}
          onChangeText={onChangeText}
          value={text}
    />*/}
-      </View>
       <View 
       style={styles.thirdContainer}>
         <DropDownPicker 
-        style={{width: 150, borderWidth: 2, borderColor: "#006494", }}
+        style={{width: "103%", borderWidth: 2, borderColor: "#006494", }}
         open={open1}
         value={value1}
         items={items1}
@@ -159,8 +163,7 @@
         setItems={setItems1}
         placeholder="Type"
         searchable={true}
-        searchPlaceholder="Recherchez..."
-        dropDownDirection="DOWN"
+        searchPlaceholder="Recherchez ..."
         multiple={true}
         min={0}
         max={8}
@@ -168,9 +171,15 @@
         zIndexInverse={2000}
         onOpen={onOpen1}
         showTickIcon={true}
+        placeholderStyle={{color: "#006494",}}
+        labelContainerStyle={{color: "#006494", fontWeight: "bold"}}
+        dropDownContainerStyle={{width: "103%", borderColor: "#f5f5f5", borderBottomWidth: 3, borderBottomColor: "#006494"}}
+        selectedItemContainerStyle={{backgroundColor: "#006494"}}
+        selectedItemLabelStyle={{color: "#fff"}}
+        searchContainerStyle={{padding: 10, borderBottomWidth: 0}}
       />
       <DropDownPicker 
-        style={{width: 150, borderWidth: 2, borderColor: "#006494"}}
+        style={{width: "103%", borderWidth: 2, borderColor: "#006494", marginLeft: 20}}
         open={open2}
         value={value2}
         items={items2}
@@ -178,17 +187,20 @@
         setValue={setValue2}
         setItems={setItems2}
         placeholder="Catégories"
-        dropDownDirection="DOWN"
-        zIndex={2000}
-        zIndexInverse={2000}
+        dropDownDirection="DEFAULT"
         onOpen={onOpen2}
+        placeholderStyle={{color: "#006494",}}
+        dropDownContainerStyle={{width: "103%", borderColor: "#f5f5f5", borderBottomWidth: 3, borderBottomColor: "#006494", marginLeft: 20}}
+        selectedItemContainerStyle={{backgroundColor: "#006494"}}
+        selectedItemLabelStyle={{color: "#fff"}}
+        searchContainerStyle={{padding: 10, borderBottomWidth: 0}}
       />
       </View>
 
       <View 
       style={styles.fourthContainer}>
         <DropDownPicker 
-        style={{width: 150, borderWidth: 2, borderColor: "#006494"}}
+        style={{width: "103%", borderWidth: 2, borderColor: "#006494",}}
         open={open3}
         value={value3}
         items={items3}
@@ -197,17 +209,21 @@
         setItems={setItems3}
         placeholder="Secteur"
         searchable={true}
-        dropDownDirection="TOP"
-        zIndex={1000}
-        zIndexInverse={3000}
+        dropDownDirection="DOWN"
         onOpen={onOpen3}
         searchPlaceholder="Recherchez ..."
         multiple={true}
         min={0}
         max={8}
+        placeholderStyle={{color: "#006494",}}
+        dropDownContainerStyle={{width: "103%", borderColor: "#f5f5f5", borderBottomWidth: 3, borderBottomColor: "#006494"}}
+        searchContainerStyle={{borderColor: "#12ff"}}
+        selectedItemContainerStyle={{backgroundColor: "#006494"}}
+        selectedItemLabelStyle={{color: "#fff"}}
+        searchContainerStyle={{padding: 10, borderBottomWidth: 0}}
       />
       <DropDownPicker 
-        style={{width: 150, borderWidth: 2, borderColor: "#006494"}}
+        style={{width: "103%", borderWidth: 2, borderColor: "#006494", marginLeft: 20}}
         open={open4}
         value={value4}
         items={items4}
@@ -216,32 +232,41 @@
         setItems={setItems4}
         placeholder="Domaine"
         searchable={true}
-        dropDownDirection="TOP"
-        zIndex={1000}
-        zIndexInverse={3000}
+        dropDownDirection="DOWN"
         onOpen={onOpen4}
         searchPlaceholder="Recherchez ..."
         multiple={true}
         min={0}
         max={8}
+        placeholderStyle={{color: "#006494",}}
+        dropDownContainerStyle={{width: "103%", borderColor: "#f5f5f5", borderBottomWidth: 3, borderBottomColor: "#006494", borderColor: "#f5f5f5", marginLeft: 20}}
+        searchContainerStyle={{borderColor: "#12ff"}}
+        selectedItemContainerStyle={{backgroundColor: "#006494"}}
+        selectedItemLabelStyle={{color: "#fff"}}
+        searchContainerStyle={{padding: 10, borderBottomWidth: 0}}
       />
       </View>
-      <View style={{width: 200, margin: 10}}>
-        <Button
-         title="Reinitialiser les filtres"
-         disabled
-         onPress={() => Alert.alert('Simple Button pressed')} 
-        />
+      <View style={{width: 365, margin: 10, marginLeft: 15, flexDirection: "row", justifyContent:"space-between"}}>
+       
+          <TouchableOpacity disabled={true}
+          style={{backgroundColor:"#f1f3f4", borderColor: "#ddd", borderWidth: 1, width: 175}}>
+            <Text style={{padding: 10, color: "#999", fontSize: 15,}}>Reinitialiser les filtres</Text>
+          </TouchableOpacity>
+
+          <View style={{borderColor: "#4d6072", borderBottomLeftRadius: 10, borderBottomRightRadius: 10, borderBottomWidth: 2,}}>
+          <TouchableOpacity onPress={() => Alert.alert('Simple Button pressed')}
+          style={{backgroundColor:"transparent",  width: 175}}>
+            <Text style={{padding: 10, color: "#4d6072", fontSize: 13, textAlign: "center", fontWeight: "500"}}> <Text style={{fontSize: 18}}>+</Text>  PLUS DE FILTRES</Text>
+          </TouchableOpacity>
+          </View>
+          
+        
       </View>
-      <View style={{width: 200, paddingLeft: 20, paddingRight: 20}}>
-        <Button 
-          title="+ Plus de filtres"
-          onPress={() => Alert.alert('Simple Button pressed')}>
-         </Button>
       </View>
-      </View>
-      <Text style={{fontWeight: "bold", color: "#000", fontSize: 15,  paddingLeft: 10, paddingRight: 10}}>Aucune donnée trouvée, 
+      <View style={{zIndex: -1000}}>
+      <Text style={{fontWeight: "bold", color: "#000", fontSize: 15,  paddingLeft: 10, paddingRight: 10,}}>Aucune donnée trouvée, 
       <Text style={{fontWeight: "normal"}}> vous voudriez <Text style={{color: "rgb(0, 100, 148)"}} onPress={()=> Linking.openURL("http://google.com")}>réinitialiser les filtres?</Text></Text> </Text>
+      </View>
      </SafeAreaView>
    );
  };
@@ -252,39 +277,40 @@
      margin: 12,
      borderWidth: 0,
      padding: 10,
-     width: 320,
+     width: 330,
      borderRadius: 7,
      borderColor: "#e3dada",
      borderLeftWidth: 0,
      marginLeft: 5,
-     color: "#000"
+     color: "#245c95"
    },
    container: {
     backgroundColor: "#fff",
     flexDirection: "row",
     alignItems: "center",
-    width: 330,
+    width: "93%",
     borderWidth: 1,
     borderColor: "#e3dada",
     borderRadius: 7,
     paddingLeft: 10,
     height: 40,
     margin: 5,
-    marginLeft: 10,
+    marginLeft: 15,
    },
    secondContainer: {
     backgroundColor: "#fff",
     flexDirection: "row",
     alignItems: "center",
-    width: 330,
+    width: "93%",
     borderWidth: 1,
     borderColor: "#e3dada",
     borderRadius: 7,
     paddingLeft: 10,
     height: 50,
     margin: 5,
-    marginLeft: 10,
+    marginLeft: 15,
     zIndex: 3000,
+    maxHeight: 50
    },
    thirdContainer: {
     flexDirection: "row",
@@ -292,9 +318,9 @@
     width: 170,
     height: 50,
     margin: 5,
-    marginLeft: 10,
+    marginLeft: 15,
     marginTop: 20,
-    zIndex: 2000
+    zIndex: 2000,
    },
    fourthContainer: {
     flexDirection: "row",
@@ -302,8 +328,12 @@
     width: 170,
     height: 50,
     margin: 5,
-    marginLeft: 10,
+    marginLeft: 15,
+    zIndex: 1000,
    },
+   picker: {
+    
+   }
  });
  
 export default UselessTextInput;
